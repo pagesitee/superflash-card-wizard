@@ -26,8 +26,12 @@ export const FlashCardContainer = ({
   isFullscreen
 }: FlashCardContainerProps) => {
   return (
-    <div className="flex justify-center items-center">
-      <div className={`${isFullscreen ? 'w-full max-w-6xl h-[90vh]' : 'w-full max-w-3xl h-[500px]'} transition-all duration-300`}>
+    <div className="flex justify-center items-center p-2 sm:p-4">
+      <div className={`w-full transition-all duration-300 ${
+        isFullscreen 
+          ? 'max-w-6xl h-[85vh] min-h-[600px]' 
+          : 'max-w-3xl h-[70vh] min-h-[500px] max-h-[800px]'
+      }`}>
         <FlashCard
           card={card}
           cardNumber={cardNumber}

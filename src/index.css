@@ -37,7 +37,7 @@
     --radius: 20px;
     
     /* Animations */
-    --animation-duration: 0.3s;
+    --animation-duration: 0.4s;
     --animation-bounce: cubic-bezier(0.68, -0.55, 0.265, 1.55);
   }
 
@@ -100,6 +100,8 @@
     background: hsl(var(--card-background));
     box-shadow: var(--shadow-card);
     border: 1px solid hsl(var(--border));
+    overflow-y: auto;
+    overflow-x: hidden;
   }
   
   .flip-card-back {
@@ -213,17 +215,62 @@
   }
 }
 
-/* Responsive adjustments */
+/* Enhanced Responsive Styles */
 @media (max-width: 768px) {
   .flip-card-front,
   .flip-card-back {
-    padding: 1.5rem;
+    padding: 1rem;
+  }
+  
+  :root {
+    --radius: 16px;
   }
 }
 
 @media (max-width: 480px) {
   .flip-card-front,
   .flip-card-back {
-    padding: 1rem;
+    padding: 0.75rem;
   }
+  
+  :root {
+    --radius: 12px;
+  }
+}
+
+/* Ensure proper text wrapping and scrolling */
+.flip-card-front h2,
+.flip-card-back h4,
+.flip-card-back p {
+  word-wrap: break-word;
+  overflow-wrap: break-word;
+  hyphens: auto;
+}
+
+/* Smooth scrolling for card content */
+.flip-card-front,
+.flip-card-back {
+  scroll-behavior: smooth;
+}
+
+/* Custom scrollbar for card content */
+.flip-card-front::-webkit-scrollbar,
+.flip-card-back::-webkit-scrollbar {
+  width: 6px;
+}
+
+.flip-card-front::-webkit-scrollbar-track,
+.flip-card-back::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.flip-card-front::-webkit-scrollbar-thumb,
+.flip-card-back::-webkit-scrollbar-thumb {
+  background: rgba(0, 0, 0, 0.2);
+  border-radius: 3px;
+}
+
+.flip-card-front::-webkit-scrollbar-thumb:hover,
+.flip-card-back::-webkit-scrollbar-thumb:hover {
+  background: rgba(0, 0, 0, 0.3);
 }

@@ -36,6 +36,13 @@ export const useFlashCardNavigation = (totalCards: number) => {
     setSelectedAnswer(answerIndex);
     setShowResult(true);
     
+    // Auto-flip the card after selecting answer if it has alternatives
+    if (card.alternativas && card.alternativas.length > 0) {
+      setTimeout(() => {
+        setIsFlipped(true);
+      }, 800); // Small delay to show the result first
+    }
+    
     const isCorrect = card.alternativas?.[answerIndex]?.correto || false;
     return isCorrect;
   }, [showResult]);
